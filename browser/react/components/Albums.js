@@ -1,10 +1,21 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {Link} from 'react-router';
 
-const Albums = (props) => {
+export default class Albums extends Component{
+  constructor(props) {
+    super(props);  
+  }
 
-  const albums = props.albums;
-  
+ render() {
+  let albums;
+  if (this.props.routeParams.selectedArtist) {
+    albums = this.props.routeParams.selectedArtist.albums;
+  } else {
+    albums = this.props.albums
+  }
+  // this.props.routeParams.selectedArtist.id ? albums = this.props.routeParams.selectedArtist.albums : albums = this.props.albums;
+  console.log("Albums", albums)
+  console.log("Props", this.props)
   return (
 
     <div>
@@ -28,6 +39,7 @@ const Albums = (props) => {
       </div>
     </div>
   );
+ }
 }
 
-export default Albums;
+

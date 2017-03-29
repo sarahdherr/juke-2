@@ -1,11 +1,31 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const Songs = (props) => {
+export default class Songs extends Component{
+  constructor(props) {
+    super(props);  
+  }
 
-  const songs = props.songs;
-  const currentSong = props.currentSong;
-  const isPlaying = props.isPlaying;
-  const toggle = props.toggleOne;
+  render() {
+  const songs = this.props.songs;
+  const currentSong = this.props.currentSong;
+  const isPlaying = this.props.isPlaying;
+  const toggle = this.props.toggleOne;
+
+  // if (!this.props.routeParams) {
+  //   songs=this.props.songs 
+  // } else if (this.props.routeParams.selectedArtist) {
+  //   console.log(this.props.routeParams.selectedArtist)
+  //   songs=this.props.routeParams.selectedArtist.songs
+  // }
+
+  // if (this.props.routeParams.selectedArtist) {
+  //     songs=this.props.routeParams.selectedArtist.songs
+  // } else if (!this.props.routeParams) {
+  //     songs=this.props.songs 
+  // }
+
+  console.log('song props', this.props)
+
 
   return (
     <table className='table'>
@@ -37,6 +57,7 @@ const Songs = (props) => {
       </tbody>
     </table>
   );
+  }
 }
 
-export default Songs;
+
