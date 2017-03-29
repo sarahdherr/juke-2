@@ -14418,10 +14418,10 @@ var Sidebar = function Sidebar(props) {
       null,
       _react2.default.createElement(
         'h4',
-        { className: 'menu-item' },
+        { className: 'menu-item', activeClassName: 'active' },
         _react2.default.createElement(
           _reactRouter.Link,
-          { to: '/albums' },
+          { to: '/albums', activeClassName: 'active' },
           'ALBUMS'
         )
       )
