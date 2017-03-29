@@ -3,18 +3,14 @@ import Songs from '../components/Songs';
 
 export default class Album extends Component{
   constructor(props) {
-    super(props);
-    // const album = this.props.album;
-    // const currentSong = this.props.currentSong;
-    // const isPlaying = this.props.isPlaying;
-    // const toggleOne = this.props.toggleOne;
+    super(props);  
   }
-  // console.log(props.routeParams);
-
+  
   componentDidMount(){
     const selectAlbum = this.props.selectAlbum;
     selectAlbum(this.props.routeParams.albumId)
   }
+
   render() {
   return (
     <div className="album">

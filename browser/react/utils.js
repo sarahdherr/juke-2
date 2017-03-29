@@ -1,7 +1,13 @@
+import axios from 'axios';
+
 export const convertSong = (song) => {
   song.audioUrl = `/api/songs/${song.id}/audio`;
   return song;
 };
+
+const convertSongs = (songs) => 
+  songs.map(song => convertSong(song));
+
 
 export const convertAlbum = (album) => {
   album.imageUrl = `/api/albums/${album.id}/image`;
@@ -20,3 +26,19 @@ export const skip = (interval, { currentSongList, currentSong }) => {
   const next = currentSongList[idx];
   return [next, currentSongList];
 };
+
+export const convertArtist = (artist) => {
+  // getting artist albums
+  const albums = axios.get(`/api/artists/${artist.id}/albums`)
+    .then(res => res.data)
+    .then(albums => artist.albums = convertAlbums(albums));
+
+
+  // getting artist songs
+  const songs = axios.get(`/api/artists/${artist.id}/songs`)
+    .then(res => res.data)
+    .then(songs => artist.songs = convertSongs(songs));
+  
+  // return artist with properties albums and songs
+  return Promise.all([albums, songs]).then( () => artist)
+}
